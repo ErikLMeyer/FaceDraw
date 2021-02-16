@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+
 public class Smile {
     private int xPosition, yPosition;
     private int width, height;
@@ -62,5 +64,9 @@ public class Smile {
         setHeight(h);
         setStart(s);
         setArc(a);
+    }
+
+    public void paintComponent(Graphics g){
+        g.drawArc(xPosition, yPosition, width, height, startAngle, arcAngle);
     }
 }

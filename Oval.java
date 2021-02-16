@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+
 public class Oval {
     private int widthRadius, heightRadius;
     private int xPosition, yPosition;
@@ -46,5 +48,9 @@ public class Oval {
         setHeight(height);
         setX(x);
         setY(y);
+    }
+
+    public void paintComponent(Graphics g){
+        g.drawOval(xPosition, yPosition, widthRadius, heightRadius);
     }
 }
