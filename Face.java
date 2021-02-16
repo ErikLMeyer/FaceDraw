@@ -4,9 +4,9 @@ import java.lang.Math;
 
 public class Face extends JPanel {
     // Constants, holds mouth angles
-    static final int FROWN[] = {45, 90};
+    static final int FROWN[] = {0, 180};
     static final int NEUTRAL[] = {0, 180};
-    static final int SMILE[] = {-45, -90};
+    static final int SMILE[] = {0, -180};
 
     // member cariables
     private Oval head;
@@ -26,14 +26,14 @@ public class Face extends JPanel {
         eyeH = height / 3;
         eyeW = width / 5;
         eyeX = x + eyeW;
-        eyeY = y + eyeH;
+        eyeY = y + (eyeH / 2);
         eyes[0] = new Oval(eyeW, eyeH, eyeX, eyeY);
         eyes[1] = new Oval(eyeW, eyeH, eyeX + (eyeW*2), eyeY);
 
         int mouthE = (int)(Math.random()*3);
-        int mouthX = eyeX + (eyeW / 2);
+        int mouthX = eyeX;
         int mouthY = y + (height / 2);
-        int mouthW = eyeW * 2;
+        int mouthW = eyeW * 3;
         int mouthH = height / 2;
 
         switch(mouthE){
@@ -41,10 +41,10 @@ public class Face extends JPanel {
                 smile = new Smile(mouthX, mouthY, mouthW, mouthH, FROWN[0], FROWN[1]);
                 break;
             case 1:
-                smile = new Smile(mouthX, mouthY, mouthW, mouthH, NEUTRAL[0], NEUTRAL[1]);
+                smile = new Smile(mouthX, mouthY + (eyeH / 2), mouthW, 1, NEUTRAL[0], NEUTRAL[1]);
                 break;
             case 2:
-                smile = new Smile(mouthX, mouthY, mouthW, mouthH, SMILE[0], SMILE[1]);
+                smile = new Smile(mouthX, y + eyeH, mouthW, mouthH, SMILE[0], SMILE[1]);
                 break;
             default:
                 System.out.println("Learn how to random.");
