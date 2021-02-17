@@ -14,11 +14,11 @@ public class FaceFrame extends JFrame{
 
     FaceFrame(){
         setTitle("Face Draw");
-        setBounds(250, 150, 1150, 700);
+        setBounds(200, 100, 1150, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setNumOFaces();
-        FacePanel myFaces = new FacePanel(numOfFaces, getHeight(), getWidth(), getX(), getY());
+        FacePanel myFaces = new FacePanel(numOfFaces, getHeight(), getWidth());
 
         Container containFace = getContentPane();
 
