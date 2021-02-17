@@ -1,17 +1,20 @@
-import javax.swing.JPanel;
 import java.awt.*;
 import java.lang.Math;
 
-public class Face extends JPanel {
+public class Face {
     // Constants, holds mouth angles
     static final int FROWN[] = {0, 180};
     static final int NEUTRAL[] = {0, 180};
     static final int SMILE[] = {0, -180};
 
-    // member cariables
+    // member variables
     private Oval head;
     private Oval eyes[] = new Oval[2];
     private Smile smile;
+
+    public int getHeight(){ return head.getHeight(); }
+
+    public int getWidth(){ return head.getWidth(); }
 
     // Default constructor
     Face(){
@@ -41,7 +44,7 @@ public class Face extends JPanel {
                 smile = new Smile(mouthX, mouthY, mouthW, mouthH, FROWN[0], FROWN[1]);
                 break;
             case 1:
-                smile = new Smile(mouthX, mouthY + (eyeH / 2), mouthW, 1, NEUTRAL[0], NEUTRAL[1]);
+                smile = new Smile(mouthX, mouthY + (eyeH / 2), mouthW, 0, NEUTRAL[0], NEUTRAL[1]);
                 break;
             case 2:
                 smile = new Smile(mouthX, y + eyeH, mouthW, mouthH, SMILE[0], SMILE[1]);
@@ -53,12 +56,9 @@ public class Face extends JPanel {
     }
 
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
-        g.drawOval(head.getX(), head.getY(), head.getWidth(), head.getHeight());
-        g.drawOval(eyes[0].getX(), eyes[0].getY(), eyes[0].getWidth(), eyes[0].getHeight());
-        g.drawOval(eyes[1].getX(), eyes[1].getY(), eyes[1].getWidth(), eyes[1].getHeight());
-        g.drawArc(smile.getX(), smile.getY(), smile.getWidth(), smile.getHeight(), 
-                                                smile.getStart(), smile.getArc());
+        head.paintComponent(g);
+        eyes[0].paintComponent(g);
+        eyes[1].paintComponent(g);
+        smile.paintComponent(g);
     }
 }
