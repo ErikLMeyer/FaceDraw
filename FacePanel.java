@@ -27,6 +27,11 @@ public class FacePanel extends JPanel{
         faceYMax = frameHeight - faceHeight - 40;
     }
 
+    FacePanel(){
+        faces = new Face[1];
+        faces[0] = new Face();
+    }
+
     FacePanel(int x, int y, int width, int height){
         faces = new Face[1];
         faces[0] = new Face(x, y, width, height);
