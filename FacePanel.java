@@ -28,10 +28,41 @@ public class FacePanel extends JPanel{
         faceYMax = frameHeight - faceHeight - 40;
     }
 
+    // Adds a randomly generated Face
+    public void addFace(){
+        int width, height, x, y;
+            width = (int)(Math.random() * (faceWidthMax - FACE_WIDTH_MIN + 1)) + FACE_WIDTH_MIN;
+            height = (int)(Math.random() * (faceHeightMax - FACE_HEIGHT_MIN + 1)) + FACE_HEIGHT_MIN;
+            while ((double)(width / height) <= .2 || (double)(width / height) >= 5){
+                if (width > height)
+                    height += 10;
+                else
+                    width += 10;
+            }
+
+            x = (int)(Math.random() * (faceXMax + 1));
+            y = (int)(Math.random() * (faceYMax - FACE_Y_MIN + 1)) + FACE_Y_MIN;
+            faces.add(new Face(x, y, width, height));
+    }
+
+    // Adds a new Face with given values
+    public void addFace(int x, int y, int width, int height){
+        faces.add(new Face(x, y, width, height));
+    }
+
+    // Removes the last Face in the list
+    public void removeFace(){
+        if (faces.size() > 0)
+            faces.remove(faces.size() - 1);
+        else
+            System.out.println("List is already empty!");
+    }
+
     FacePanel(){
         faces.add(new Face());
     }
 
+    // Creates a new FacePanel with a single Face
     FacePanel(int x, int y, int width, int height){
         faces.add(new Face(x, y, width, height));
     }
