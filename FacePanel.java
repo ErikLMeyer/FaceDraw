@@ -28,21 +28,21 @@ public class FacePanel extends JPanel{
         faceYMax = frameHeight - faceHeight - 40;
     }
 
-    // Adds a randomly generated Face
+    // Adds a randomly generated Face. Position will be dependent on last call to setMaxPosition.
     public void addFace(){
         int width, height, x, y;
-            width = (int)(Math.random() * (faceWidthMax - FACE_WIDTH_MIN + 1)) + FACE_WIDTH_MIN;
-            height = (int)(Math.random() * (faceHeightMax - FACE_HEIGHT_MIN + 1)) + FACE_HEIGHT_MIN;
-            while ((double)(width / height) <= .2 || (double)(width / height) >= 5){
-                if (width > height)
-                    height += 10;
-                else
-                    width += 10;
+        width = (int)(Math.random() * (faceWidthMax - FACE_WIDTH_MIN + 1)) + FACE_WIDTH_MIN;
+        height = (int)(Math.random() * (faceHeightMax - FACE_HEIGHT_MIN + 1)) + FACE_HEIGHT_MIN;
+        while ((double)(width / height) <= .2 || (double)(width / height) >= 5){
+            if (width > height)
+                height += 10;
+            else
+                width += 10;
             }
 
-            x = (int)(Math.random() * (faceXMax + 1));
-            y = (int)(Math.random() * (faceYMax - FACE_Y_MIN + 1)) + FACE_Y_MIN;
-            faces.add(new Face(x, y, width, height));
+        x = (int)(Math.random() * (faceXMax + 1));
+        y = (int)(Math.random() * (faceYMax - FACE_Y_MIN + 1)) + FACE_Y_MIN;
+        faces.add(new Face(x, y, width, height));
     }
 
     // Adds a new Face with given values
