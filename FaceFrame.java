@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.Container;
+import java.awt.*;
 import java.awt.event.*;
 import java.lang.Math;
 
@@ -10,6 +10,7 @@ public class FaceFrame extends JFrame implements ActionListener{
     private JMenu addF, removeF;
     private JMenuItem addFa, removeFa;
     private FacePanel myFaces;
+    private Container containFace;
 
     public int getNumOFaces(){ return numOfFaces; }
 
@@ -37,7 +38,7 @@ public class FaceFrame extends JFrame implements ActionListener{
         setNumOFaces();
         myFaces = new FacePanel(numOfFaces, getHeight(), getWidth());
 
-        Container containFace = getContentPane();
+        containFace = getContentPane();
 
         containFace.add(myMenuBar);
         containFace.add(myFaces);
@@ -48,9 +49,11 @@ public class FaceFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if (e.getSource() == addFa){
             myFaces.addFace();
+            update(this.getGraphics());
         }
         if (e.getSource() == removeFa){
             myFaces.removeFace();
+            update(this.getGraphics());
         }
     }
 }
