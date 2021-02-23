@@ -49,7 +49,8 @@ public class FaceFrame extends JFrame implements ActionListener{
         if (e.getSource() == addFa){
             myFaces.addFace();
         }
-        if (e.getSource() == removeF)
+        if (e.getSource() == removeFa){
             myFaces.removeFace();
+        }
     }
 }
