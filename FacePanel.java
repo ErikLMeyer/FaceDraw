@@ -1,6 +1,7 @@
 import javax.swing.JPanel;
 import java.lang.Math;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class FacePanel extends JPanel{
     static final int FACE_HEIGHT_MIN = 25, FACE_WIDTH_MIN = 25;
@@ -8,7 +9,7 @@ public class FacePanel extends JPanel{
     private int faceHeightMax;
     private int faceWidthMax;
     private int faceXMax, faceYMax;
-    private Face faces[];
+    private ArrayList<Face> faces = new ArrayList<Face>();
 
     public int getMaxHeight(){ return faceHeightMax; }
 
@@ -28,18 +29,14 @@ public class FacePanel extends JPanel{
     }
 
     FacePanel(){
-        faces = new Face[1];
-        faces[0] = new Face();
+        faces.add(new Face());
     }
 
     FacePanel(int x, int y, int width, int height){
-        faces = new Face[1];
-        faces[0] = new Face(x, y, width, height);
+        faces.add(new Face(x, y, width, height));
     }
 
     FacePanel(int numOfFaces, int frameHeight, int frameWidth){
-        faces = new Face[numOfFaces];
-
         setMaxDimensions(frameHeight, frameWidth);
 
         int width, height, x, y;
@@ -56,15 +53,15 @@ public class FacePanel extends JPanel{
             setMaxPosition(frameWidth, frameHeight, width, height);
             x = (int)(Math.random() * (faceXMax + 1));
             y = (int)(Math.random() * (faceYMax - FACE_Y_MIN + 1)) + FACE_Y_MIN;
-            faces[i] = new Face(x, y, width, height);
+            faces.add(new Face(x, y, width, height));
         }
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
-        for (int i = 0; i < faces.length; i++){
-            faces[i].paintComponent(g);
+        for (int i = 0; i < faces.size(); i++){
+            faces.get(i).paintComponent(g);
         }
     }
 }
