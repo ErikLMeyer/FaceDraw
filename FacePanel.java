@@ -4,26 +4,39 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class FacePanel extends JPanel{
+    // Constants. Defines minimum size and position of a Face.
     static final int FACE_HEIGHT_MIN = 25, FACE_WIDTH_MIN = 25;
     static final int FACE_X_MIN = 0, FACE_Y_MIN = 1;
+
+    // Member variables. Determines maximum size and position of a Face.
     private int faceHeightMax;
     private int faceWidthMax;
     private int faceXMax, faceYMax;
+
+    // The ArrayList of every Face
     private ArrayList<Face> faces = new ArrayList<Face>();
 
+    // Returns the maximum height a new Face can be
     public int getMaxHeight(){ return faceHeightMax; }
 
+    // Returns the maximum width a new Face can be
     public int getMaxWidth(){ return faceWidthMax; }
 
+    // Returns the maximum X coordinate a new Face can be placed
     public int getMaxX(){ return faceXMax; }
 
+    // Returns the maximum Y coordinate a new Face can be placed
     public int getMaxY(){ return faceYMax; }
 
+    // Returns a Face object from ArrayList faces. i must be a valid index in faces.
     public Face getFace(int i){
         assert (i >= 0 && i < faces.size()): "Invalid index";
         return faces.get(i);
     }
 
+    // Sets faceHeightMax and faceWidthMax, the maximum dimensions a new Face can be.
+    // frameHeight and frameWidth shoudl be the current or desired height and width of the current 
+    // frame.
     public void setMaxDimensions(int frameHeight, int frameWidth){
         faceHeightMax = (frameHeight < 700) ? frameHeight / 2 : 350;
         faceWidthMax = (frameWidth < 1150) ? frameWidth / 3 : 350;
@@ -63,6 +76,7 @@ public class FacePanel extends JPanel{
             System.out.println("List is already empty!");
     }
 
+    // Default constructor
     FacePanel(){
         faces.add(new Face());
     }
@@ -72,9 +86,12 @@ public class FacePanel extends JPanel{
         faces.add(new Face(x, y, width, height));
     }
 
+    // Creates a new FacePanel with numOfFaces number of Face objects, with sizes and positions
+    // dependent on the given frameWidth and frameHeight.
     FacePanel(int numOfFaces, int frameHeight, int frameWidth){
         setMaxDimensions(frameHeight, frameWidth);
 
+        // Loops a number of times equal to numOfFaces, creating a new Face object each loop.
         int width, height, x, y;
         for (int i = 0; i < numOfFaces; i++){
             width = (int)(Math.random() * (faceWidthMax - FACE_WIDTH_MIN + 1)) + FACE_WIDTH_MIN;
@@ -93,6 +110,7 @@ public class FacePanel extends JPanel{
         }
     }
 
+    // Paints the Face objects in faces
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
@@ -101,6 +119,7 @@ public class FacePanel extends JPanel{
         }
     }
 
+    // Returns a String describing the number of Face objects in the FacePanel.
     public String toString(){
         return "Number of Faces = " + faces.size();
     }
