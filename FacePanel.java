@@ -19,6 +19,11 @@ public class FacePanel extends JPanel{
 
     public int getMaxY(){ return faceYMax; }
 
+    public Face getFace(int i){
+        assert (i >= 0 && i < faces.size()): "Invalid index";
+        return faces.get(i);
+    }
+
     public void setMaxDimensions(int frameHeight, int frameWidth){
         faceHeightMax = (frameHeight < 700) ? frameHeight / 2 : 350;
         faceWidthMax = (frameWidth < 1150) ? frameWidth / 3 : 350;
@@ -94,5 +99,9 @@ public class FacePanel extends JPanel{
         for (int i = 0; i < faces.size(); i++){
             faces.get(i).paintComponent(g);
         }
+    }
+
+    public String toString(){
+        return "Number of Faces = " + faces.size();
     }
 }
