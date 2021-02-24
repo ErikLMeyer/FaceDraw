@@ -34,4 +34,9 @@ public class Oval {
     public void paintComponent(Graphics g){
         g.drawOval(xPosition, yPosition, widthRadius, heightRadius);
     }
+
+    public String toString(){
+        return "X = " + xPosition + ", Y = " + yPosition + ", width = " + widthRadius + ", height = " + 
+            heightRadius;
+    }
 }

@@ -45,4 +45,9 @@ public class Smile {
     public void paintComponent(Graphics g){
         g.drawArc(xPosition, yPosition, width, height, startAngle, arcAngle);
     }
+
+    public String toString(){
+        return "X = " + xPosition + ", Y = " + yPosition + ", width = " + width + ", height = " + 
+            height + ", start angle = " + startAngle + ", arc angle = " + arcAngle;
+    }
 }
