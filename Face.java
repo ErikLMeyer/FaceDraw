@@ -61,4 +61,9 @@ public class Face {
         eyes[1].paintComponent(g);
         smile.paintComponent(g);
     }
+
+    public String toString(){
+        return "Head: " + head + "\nLeft eye: " + eyes[0] + "\nRight eye: " + eyes[1] + "\nMouth: "
+            + smile;
+    }
 }
