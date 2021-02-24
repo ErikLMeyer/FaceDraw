@@ -44,6 +44,8 @@ public class FaceFrame extends JFrame implements ActionListener{
         containFace.add(myFaces);
 
         setJMenuBar(myMenuBar);
+
+        printFaces();
     }
 
     public void actionPerformed(ActionEvent e){
@@ -55,5 +57,11 @@ public class FaceFrame extends JFrame implements ActionListener{
             myFaces.removeFace();
             update(this.getGraphics());
         }
+        printFaces();
+    }
+
+    public void printFaces(){
+        for (int i = 0; i < numOfFaces; i++)
+            System.out.println("Face " + (i + 1) + ":\n" + myFaces.getFace(i));
     }
 }
